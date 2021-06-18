@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-//hm
+import 'package:flutter_catalog/utils/routes.dart';
+
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -37,10 +38,12 @@ class LoginPage extends StatelessWidget {
                   SizedBox(height: 15),
                   ElevatedButton(
                     onPressed: () {
-                      print("hi pari");
+                      Navigator.pushNamed(context, MyRoutes.homeRoute);
                     },
                     child: Text("Login"),
-                    style: TextButton.styleFrom(),
+                    style: TextButton.styleFrom(
+                      minimumSize: Size(150, 40),
+                    ),
                   ),
                 ],
               ),
