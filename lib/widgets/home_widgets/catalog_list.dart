@@ -5,8 +5,6 @@ import 'package:flutter_catalog/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'catalog_image.dart';
 
-
-
 class CatalogList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,23 +13,25 @@ class CatalogList extends StatelessWidget {
       itemCount: CatalogModel.items.length,
       itemBuilder: (context, index) {
         final catalog = CatalogModel.items[index];
-            return InkWell(
+        return InkWell(
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => HomeDetailPage(
-                catalog: catalog, key:new Key(index.toString()),
+                catalog: catalog,
+                key: new Key(index.toString()),
               ),
             ),
           ),
-          child: CatalogItem(catalog: catalog, key:new Key(index.toString()),),
+          child: CatalogItem(
+            catalog: catalog,
+            key: new Key(index.toString()),
+          ),
         );
       },
     );
   }
 }
-
-
 
 class CatalogItem extends StatelessWidget {
   final Item catalog;
@@ -43,8 +43,6 @@ class CatalogItem extends StatelessWidget {
 
   get index => null;
 
-  
-
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
@@ -53,10 +51,11 @@ class CatalogItem extends StatelessWidget {
     return VxBox(
       child: Row(
         children: [
-            Hero(
+          Hero(
             tag: Key(catalog.id.toString()),
             child: CatalogImage(
-              image: catalog.image, key: new Key(index.toString()),
+              image: catalog.image,
+              key: new Key(index.toString()),
             ),
           ),
           Expanded(
@@ -76,15 +75,12 @@ class CatalogItem extends StatelessWidget {
                     onPressed: () {},
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                          MyTheme.deepPurple, 
+                          MyTheme.deepPurple,
                         ),
-                      
-                      shape: MaterialStateProperty.all(
+                        shape: MaterialStateProperty.all(
                           StadiumBorder(),
-                        )
-                        ),
-                    child: "Buy".text.make(),
-                    
+                        )),
+                    child: "Add To Cart".text.make(),
                   )
                 ],
               ).pOnly(right: 8.0)
