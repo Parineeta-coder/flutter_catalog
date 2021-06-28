@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/models/catalog.dart';
 import 'package:flutter_catalog/pages/home_detail.dart';
-import 'package:flutter_catalog/widgets/themes.dart';
+import 'package:flutter_catalog/pages/home_detail_page.dart';
 import 'package:velocity_x/velocity_x.dart';
+
 import 'catalog_image.dart';
 
 class CatalogList extends StatelessWidget {
@@ -19,13 +20,13 @@ class CatalogList extends StatelessWidget {
             MaterialPageRoute(
               builder: (context) => HomeDetailPage(
                 catalog: catalog,
-                key: new Key(index.toString()),
+                key: new Key(toString()),
               ),
             ),
           ),
           child: CatalogItem(
             catalog: catalog,
-            key: new Key(index.toString()),
+            key: new Key(toString()),
           ),
         );
       },
@@ -37,17 +38,10 @@ class CatalogItem extends StatelessWidget {
   final Item catalog;
 
   const CatalogItem({required Key key, required this.catalog})
-      // ignore: unnecessary_null_comparison
-      : assert(catalog != null),
-        super(key: key);
-
-  get index => null;
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // ignore: unused_local_variable
-    var darkBluishColor;
-    var captionStyle = context.captionStyle;
     return VxBox(
       child: Row(
         children: [
@@ -55,7 +49,7 @@ class CatalogItem extends StatelessWidget {
             tag: Key(catalog.id.toString()),
             child: CatalogImage(
               image: catalog.image,
-              key: new Key(index.toString()),
+              key: new Key(toString()),
             ),
           ),
           Expanded(
@@ -63,31 +57,34 @@ class CatalogItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              catalog.name.text.lg.color(MyTheme.darkBluishColor).bold.make(),
-              catalog.desc.text.textStyle(captionStyle!).make(),
+              catalog.name.text.lg.color(context.accentColor).bold.make(),
+              catalog.desc.text.textStyle(context.captionStyle!).make(),
               10.heightBox,
               ButtonBar(
                 alignment: MainAxisAlignment.spaceBetween,
                 buttonPadding: EdgeInsets.zero,
                 children: [
                   "\$${catalog.price}".text.bold.xl.make(),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                          MyTheme.deepPurple,
-                        ),
-                        shape: MaterialStateProperty.all(
-                          StadiumBorder(),
-                        )),
-                    child: "Add To Cart".text.make(),
-                  )
                 ],
-              ).pOnly(right: 8.0)
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(context.theme.buttonColor),
+                    shape: MaterialStateProperty.all(
+                      StadiumBorder(),
+                    )),
+                child: "Add to cart".text.make(),
+              )
             ],
           ))
         ],
       ),
-    ).white.rounded.square(150).make().py16();
+    )
+        .color(context.cardColor)
+        // .rounded.square(150)
+        .make()
+        .py16();
   }
 }

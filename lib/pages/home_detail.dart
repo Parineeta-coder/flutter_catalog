@@ -63,8 +63,9 @@ class HomeDetailPage extends StatelessWidget {
                         .textStyle(context.captionStyle!)
                         .make()
                         .p16()
+                        
                   ],
-                ).py64(),
+                ).py20(),
               ),
             ))
           ],

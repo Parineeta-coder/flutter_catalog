@@ -3,6 +3,7 @@ import 'package:flutter_catalog/pages/cart_page.dart';
 import 'package:flutter_catalog/pages/home_page.dart';
 import 'package:flutter_catalog/pages/login_page.dart';
 import 'package:flutter_catalog/utils/routes.dart';
+import 'package:flutter_catalog/widgets/themes.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,19 +12,21 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    var materialApp = MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: LoginPage(),
-      themeMode: ThemeMode.light,
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-        appBarTheme: AppBarTheme(
-            color: Colors.white,
-            elevation: 0.0,
-            iconTheme: IconThemeData(color: Colors.black)),
-      ),
-      darkTheme: ThemeData(brightness: Brightness.dark),
-      initialRoute: MyRoutes.homeRoute,
+      themeMode: ThemeMode.dark,
+      theme: MyTheme.lightTheme(context),
+      darkTheme: MyTheme.darkTheme(context),
+      // theme: ThemeData(
+      //   primarySwatch: Colors.deepPurple,
+      //   appBarTheme: AppBarTheme(
+      //       color: Colors.white,
+      //       elevation: 0.0,
+      //       iconTheme: IconThemeData(color: Colors.black)),
+      // ),
+      // darkTheme: ThemeData(brightness: Brightness.dark),
+      initialRoute: MyRoutes.loginRoute,
       routes: {
         "/": (context) => LoginPage(),
         MyRoutes.homeRoute: (context) => HomePage(),
@@ -31,5 +34,6 @@ class MyApp extends StatelessWidget {
         MyRoutes.cartRoute: (context) => CartPage()
       },
     );
+    return materialApp;
   }
 }
