@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/utils/routes.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class LoginPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _LoginPageState get createState => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               SizedBox(height: 30),
               Image.asset(
-                "assets/images/ll.gif",
+                "assets/images/lp.gif",
                 fit: BoxFit.cover,
               ),
               SizedBox(height: 30),
@@ -116,4 +116,5 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ));
   }
+  
 }

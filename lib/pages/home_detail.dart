@@ -14,7 +14,7 @@ class HomeDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var captionStyle = context.captionStyle;
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.transparent),
+      appBar: AppBar(backgroundColor: context.canvasColor),
       backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
         color: context.cardColor,
@@ -22,18 +22,19 @@ class HomeDetailPage extends StatelessWidget {
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
           children: [
-            "\$${catalog.price}".text.bold.xl4.red800.make(),
+            "\$${catalog.price}".text.bold.xl3.white.make(),
             ElevatedButton(
               onPressed: () {},
               style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all(MyTheme.darkBluishColor),
+                      MaterialStateProperty.all(Colors.grey[900]),
                   shape: MaterialStateProperty.all(StadiumBorder())),
               child: "Add to cart".text.make(),
             ).wh(120, 50)
           ],
         ).p32(),
       ),
+      
       body: SafeArea(
         bottom: false,
         child: Column(
@@ -42,7 +43,8 @@ class HomeDetailPage extends StatelessWidget {
               tag: Key(catalog.id.toString()),
               child: Image.network(catalog.image),
             ).h32(context),
-            Expanded(
+
+           Expanded(
                 child: VxArc(
               height: 30.0,
               arcType: VxArcType.CONVEY,
@@ -50,12 +52,16 @@ class HomeDetailPage extends StatelessWidget {
               child: Container(
                 color: context.cardColor,
                 width: context.screenWidth,
+              
+
                 child: Column(
                   children: [
+                    SizedBox(height: 30),
                     catalog.name.text.xl4
-                        .color(context.accentColor)
+                        .color(Colors.purple[400]!)
                         .bold
                         .make(),
+                       
                     catalog.desc.text.textStyle(captionStyle!).xl.make(),
                     10.heightBox,
                     "Dolor sea takimata ipsum sea eirmod aliquyam est. Eos ipsum voluptua eirmod elitr, no dolor dolor amet eirmod dolor labore dolores magna. Amet vero vero vero kasd, dolore sea sed sit invidunt nonumy est sit clita. Diam aliquyam amet tempor diam no aliquyam invidunt. Elitr lorem eirmod dolore clita. Rebum."

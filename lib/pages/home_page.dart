@@ -11,7 +11,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 class HomePage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomePageState get createState => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: MyTheme.creamColor,
         floatingActionButton: FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context,MyRoutes.cartRoute),
-          backgroundColor: MyTheme.darkBluishColor,
+          backgroundColor: Colors.purple,
           child: Icon(CupertinoIcons.cart),
         ),
         body: SafeArea(

@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       //       iconTheme: IconThemeData(color: Colors.black)),
       // ),
       // darkTheme: ThemeData(brightness: Brightness.dark),
-      initialRoute: MyRoutes.loginRoute,
+      initialRoute: MyRoutes.homeRoute,
       routes: {
         "/": (context) => LoginPage(),
         MyRoutes.homeRoute: (context) => HomePage(),
@@ -37,3 +37,5 @@ class MyApp extends StatelessWidget {
     return materialApp;
   }
 }
+
+
