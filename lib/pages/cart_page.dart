@@ -76,7 +76,7 @@ class __CartListState extends State<_CartList> {
           icon: Icon(Icons.remove_circle_outline),
           onPressed: () {},
         ),
-        title: "item 1".text.make(),
+        title: _cart.items[index].name.text.make(),
       ),
     );
   }

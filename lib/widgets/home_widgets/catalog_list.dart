@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/models/cart.dart';
 import 'package:flutter_catalog/models/catalog.dart';
 import 'package:flutter_catalog/pages/home_detail.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'catalog_image.dart';
-
 
 class CatalogList extends StatelessWidget {
   @override
@@ -66,16 +66,7 @@ class CatalogItem extends StatelessWidget {
                   "\$${catalog.price}".text.bold.xl.make(),
                 ],
               ),
-              ElevatedButton(
-                onPressed: () {},
-                style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.grey[900]),
-                    shape: MaterialStateProperty.all(
-                      StadiumBorder(),
-                    )),
-                child: "Add to cart".text.make(),
-              )
+              _AddToCart(catalog: catalog)
             ],
           ))
         ],
@@ -85,5 +76,41 @@ class CatalogItem extends StatelessWidget {
         // .rounded.square(150)
         .make()
         .py16();
+  }
+}
+
+class _AddToCart extends StatefulWidget {
+  final Item catalog;
+  const _AddToCart({
+    Key? key,
+    required this.catalog,
+  }) : super(key: key);
+
+  @override
+  State<StatefulWidget> get createState => __AddToCartState();
+}
+
+class __AddToCartState extends State<_AddToCart> {
+  bool isAdded = false;
+
+  CatalogModel? get catalog => null;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        isAdded = isAdded.toggle();
+        final _catalog = CatalogModel();
+        final _cart = CartModel();
+        _cart.catalog =  CatalogModel();
+        _cart.add(widget.catalog);
+        setState(() {});
+      },
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Colors.grey[900]),
+          shape: MaterialStateProperty.all(
+            StadiumBorder(),
+          )),
+      child: isAdded ? Icon(Icons.done) : "Add to cart".text.make(),
+    );
   }
 }

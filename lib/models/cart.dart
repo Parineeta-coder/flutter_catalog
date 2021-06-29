@@ -1,6 +1,8 @@
 import 'package:flutter_catalog/models/catalog.dart';
 
 class CartModel {
+
+  ///singleton// study creating one object 
   static final cartModel = CartModel._internal();
 
   CartModel._internal();
