@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/models/cart.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CartPage extends StatelessWidget {
@@ -9,6 +10,73 @@ class CartPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: "Cart".text.make(),
+      ),
+      body: Column(
+        children: [
+          _CartList(key: new Key(toString()),).p32().expand(),
+          Divider(),
+          _CartTotal(),
+        ],
+      ),
+    );
+  }
+}
+
+class _CartTotal extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // ignore: unused_local_variable
+    final _cart = CartModel();
+    return SizedBox(
+      height: 200,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          "\$${_cart.totalPrice}"
+              .text
+              .xl5
+              .color(context.theme.accentColor)
+              .make(),
+          30.widthBox,
+          ElevatedButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: "Buying not supported yet.".text.make(),
+              ));
+            },
+            style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all(context.theme.buttonColor)),
+            child: "Buy".text.white.make(),
+          ).w32(context)
+        ],
+      ),
+    );
+  }
+}
+
+class _CartList extends StatefulWidget {
+ 
+  _CartList({ required Key key }): super(key: key);
+
+  @override
+  
+  State<StatefulWidget> get createState =>__CartListState();
+}
+
+class __CartListState extends State<_CartList> {
+  final _cart = CartModel();
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: _cart.items.length,
+      itemBuilder: (context, index) => ListTile(
+        leading: Icon(Icons.done),
+        trailing: IconButton(
+          icon: Icon(Icons.remove_circle_outline),
+          onPressed: () {},
+        ),
+        title: "item 1".text.make(),
       ),
     );
   }
