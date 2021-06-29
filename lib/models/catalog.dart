@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 class CatalogModel {
-  static final catModel = CatalogModel._internal();
+  // static final catModel = CatalogModel._internal();
 
-  CatalogModel._internal();
+  // CatalogModel._internal();
 
-  factory CatalogModel() => catModel;
+  // factory CatalogModel() => catModel;
 
  static List<Item> items=[];
 
@@ -15,6 +15,8 @@ class CatalogModel {
 
   // Get Item by position
    Item getByPosition(int pos) => items[pos];
+
+
 }
 
 class Item {

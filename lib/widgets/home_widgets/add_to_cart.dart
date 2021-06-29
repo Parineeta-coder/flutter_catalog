@@ -5,25 +5,17 @@ import 'package:flutter_catalog/models/catalog.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 
-class AddToCart extends StatefulWidget {
+class AddToCart extends StatelessWidget {
   final Item catalog;
-  const AddToCart({
-    Key? key,
-    required this.catalog,
-  }) : super(key: key);
+   AddToCart({Key? key, required this.catalog,}) : super(key: key);
 
-  @override
-  State<StatefulWidget> get createState => _AddToCartState();
-}
-
-class _AddToCartState extends State<AddToCart> {
-  CatalogModel? get catalog => null;
+ 
 
   final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
     bool isInCart;
-    if (_cart.items.contains(widget.catalog)) {
+    if (_cart.items.contains(catalog)) {
       isInCart = true;
     } else {
       isInCart = false;
@@ -34,11 +26,12 @@ class _AddToCartState extends State<AddToCart> {
         if(!isInCart )
         {
           isInCart = isInCart.toggle();
+         // ignore: unused_local_variable
          final _catalog = CatalogModel();
 
         _cart.catalog = CatalogModel();
-        _cart.add(widget.catalog);
-        setState(() {});
+        _cart.add(catalog);
+        // setState(() {});
         }
       },
       style: ButtonStyle(

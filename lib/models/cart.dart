@@ -3,11 +3,11 @@ import 'package:flutter_catalog/models/catalog.dart';
 class CartModel {
 
   ///singleton// study creating one object 
-  static final cartModel = CartModel._internal();
+  // static final cartModel = CartModel._internal();
 
-  CartModel._internal();
+  // CartModel._internal();
 
-  factory CartModel() => cartModel;
+  // factory CartModel() => cartModel;
 
   // catalog field
   late CatalogModel _catalog;
@@ -42,4 +42,5 @@ class CartModel {
   void remove(Item item) {
     _itemIds.remove(item.id);
   }
+
 }
