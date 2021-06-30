@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/utils/routes.dart';
 
 class MyDrawer extends StatelessWidget {
   @override
@@ -15,7 +16,7 @@ class MyDrawer extends StatelessWidget {
           padding: EdgeInsets.zero,
           child: UserAccountsDrawerHeader(
               margin: EdgeInsets.zero,
-              accountName: Text("Pari Sarkar"),
+              accountName: Text("Parineeta Sarkar"),
               accountEmail: Text("pari@gmail.com"),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage(imageurl),
@@ -23,30 +24,50 @@ class MyDrawer extends StatelessWidget {
         ),
         ListTile(
           leading: Icon(
-            CupertinoIcons.home,
-            color: Colors.deepPurple,
-          ),
-          title: Text(
-            "Home",
-            // textScaleFactor: 1.2,
-          ),
-        ),
-        ListTile(
-          leading: Icon(
             CupertinoIcons.profile_circled,
-            color: Colors.deepPurple,
+            color: Colors.deepPurple[400],
           ),
           title: Text(
             "Profile",
           ),
+          subtitle: Text("Personal"),
         ),
+
+
         ListTile(
           leading: Icon(
-            CupertinoIcons.mail,
-            color: Colors.deepPurple,
+            CupertinoIcons.location,
+            color: Colors.deepPurple[400],
           ),
           title: Text(
-            "Email",
+            "Address",
+            // textScaleFactor: 1.2,
+          ),
+          subtitle: Text("Hengrabari"),
+          trailing: Icon(Icons.edit),
+        ),
+
+
+
+        ListTile(
+          leading: Icon(
+            CupertinoIcons.phone,
+            color: Colors.deepPurple[400],
+          ),
+          title: Text(
+            "863xxxxxx",
+          ),
+        ),
+
+
+        ListTile(
+          leading: Icon(
+            CupertinoIcons.hand_point_right,
+            color: Colors.deepPurple[400],
+          ),
+          title: Text(
+            "Logout",
+            // onTap: () => Navigator.pushReplacementNamed(context,MyRoutes.loginRoute))
           ),
         )
       ],

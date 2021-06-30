@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/utils/routes.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -21,25 +22,35 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Material(
         color: Colors.black,
+        
         child: Form(
           key: _formKey,
           child: Column(
             children: [
-              SizedBox(height: 30),
-              Image.asset(
-                "assets/images/lp.gif",
-                fit: BoxFit.cover,
-              ),
-              SizedBox(height: 30),
-              // Text(
-              //   "Welcome $name",
-              //   style: TextStyle(
-              //     fontSize: 20,
-              //     color: Colors.orange[900],
-              //     fontWeight: FontWeight.bold,
-              //     fontFamily: GoogleFonts.lato().fontFamily,
-              //   ),
+           
+          
+              SizedBox(height: 100),
+              // Image.asset(
+              //   "assets/images/lp.gif",
+              //   fit: BoxFit.cover,
               // ),
+              SizedBox(height: 70),
+              Text(
+                "Hello, $name",
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.orange[900],
+                  fontWeight: FontWeight.bold,
+                  fontFamily: GoogleFonts.lato().fontFamily,
+                ),
+              ),
+
+              Text(
+                'How are you doing today?',
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(
                     vertical: 16.0, horizontal: 32.0),
