@@ -42,10 +42,10 @@ class _CartTotal extends StatelessWidget {
                builder: ( context, _CartList, _)
              {
               var totalPrice;
-              return "\$${_cart.totalPrice}"
+              return  "\$${_cart.totalPrice}"
                   .text
-                  .xl5
-                  .color(context.theme.accentColor)
+                  .xl3
+                  .color(Colors.purple)
                   .make();
              },
           ),
@@ -79,7 +79,7 @@ class _CartList extends StatelessWidget {
             itemBuilder: (context, index) => ListTile(
               leading: Icon(Icons.done),
               trailing: IconButton(
-                icon: Icon(Icons.remove_circle_outline),
+                icon: Icon(Icons.remove_circle_outline,color: Colors.red[900]),
                 onPressed: () {
                   RemoveMutation(_cart.items[index]);
                 },

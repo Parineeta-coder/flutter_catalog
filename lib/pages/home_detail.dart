@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/models/catalog.dart';
 import 'package:flutter_catalog/widgets/home_widgets/add_to_cart.dart';
-import 'package:flutter_catalog/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class HomeDetailPage extends StatelessWidget {
@@ -15,7 +14,7 @@ class HomeDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var captionStyle = context.captionStyle;
     return Scaffold(
-      appBar: AppBar(backgroundColor: context.canvasColor),
+      // appBar: AppBar(backgroundColor: context.canvasColor),
       backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
         color: context.cardColor,

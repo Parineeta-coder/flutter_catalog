@@ -2,8 +2,11 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_catalog/core/store.dart';
+import 'package:flutter_catalog/models/cart.dart';
 import 'package:flutter_catalog/models/catalog.dart';
 import 'package:flutter_catalog/utils/routes.dart';
+import 'package:flutter_catalog/widgets/drawer.dart';
 import 'package:flutter_catalog/widgets/home_widgets/catalog_header.dart';
 import 'package:flutter_catalog/widgets/home_widgets/catalog_list.dart';
 import 'package:flutter_catalog/widgets/themes.dart';
@@ -15,9 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // final int days = 30;
 
-  // final String name = "Pari";
 
   @override
   void initState() {
@@ -42,8 +43,8 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
   }
 
-//   @override
-//   Widget build(BuildContext context) {
+  // @override
+  // Widget build(BuildContext context) {
 //     // final dummyList = List.generate(20, (index) => CatalogModel.items[0]);
 //     return Scaffold(
 //       appBar: AppBar(
@@ -108,20 +109,32 @@ class _HomePageState extends State<HomePage> {
 //                 child: CircularProgressIndicator(),
 //               ),
 //       ),
-//       drawer: MyDrawer(),
-//     );
-//   }
+    //  drawer: MyDrawer(),
+  //  );
+ // }
 
   @override
-  Widget build(BuildContext context) {
+    Widget build(BuildContext context) {
+    final _cart = (VxState.store as MyStore).cart;
     return Scaffold(
         backgroundColor: MyTheme.creamColor,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.pushNamed(context,MyRoutes.cartRoute),
-          backgroundColor: Colors.purple,
-          child: Icon(CupertinoIcons.cart),
+        floatingActionButton: VxBuilder(
+          mutations: {AddMutation, RemoveMutation},
+                  builder: (context, item,  _) => FloatingActionButton(
+            onPressed: () => Navigator.pushNamed(context,MyRoutes.cartRoute),
+            backgroundColor: Colors.grey[700],
+            child: Icon(CupertinoIcons.cart),
+          ).badge(
+            color: Vx.green600,
+            size:  18,
+            count: _cart.items.length,
+            textStyle: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            )
+          ),
         ),
-        body: SafeArea(
+        body: SafeArea( 
           child: Container(
             padding: Vx.m32,
             child: Column(
@@ -137,6 +150,10 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-        ));
-  }
-}
+        ),
+
+        drawer: MyDrawer(),
+        
+        );
+    }
+   }
